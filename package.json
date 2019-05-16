@@ -1,0 +1,40 @@
+{
+  "name": "@meanie/joi-country",
+  "description": "A Joi extension to validate countries",
+  "version": "1.0.0",
+  "homepage": "https://github.com/meanie/joi-country#readme",
+  "author": {
+    "name": "Adam Reis",
+    "email": "adam@reis.nz",
+    "url": "https://adam.reis.nz/"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meanie/joi-country.git"
+  },
+  "bugs": {
+    "url": "https://github.com/meanie/joi-country/issues"
+  },
+  "keywords": [
+    "meanie",
+    "joi",
+    "extension",
+    "country",
+    "countries"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "main": "index.js",
+  "peerDependencies": {
+    "@hapi/joi": ">=15.0.0"
+  },
+  "scripts": {
+    "postversion": "git push && git push --tags && npm publish"
+  }
+}

@@ -1,29 +1,24 @@
-/* eslint no-unused-vars: off */
 'use strict';
 
 /**
  * Extend Joi with country validation
  */
 const JoiCountry = Joi => ({
+  type: 'country',
   base: Joi.string(),
-  name: 'string',
-  language: {
-    country: 'needs to be a valid country code',
+  messages: {
+    country: 'must be a valid country code',
   },
-  rules: [
-    {
-      name: 'country',
-      setup(params) {
-        this._flags.country = true;
-      },
-      validate(params, value, state, options) {
-        if (!JoiCountry.isValid(value)) {
-          return this.createError('string.country', {value}, state, options);
-        }
-        return value.toUpperCase();
-      },
-    },
-  ],
+  coerce(value) {
+    value = value.toUpperCase();
+    return {value};
+  },
+  validate(value, helpers) {
+    if (!JoiCountry.isValid(value)) {
+      const errors = helpers.error('country');
+      return {value, errors};
+    }
+  },
 });
 
 /**

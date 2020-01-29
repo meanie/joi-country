@@ -1,7 +1,7 @@
 {
   "name": "@meanie/joi-country",
   "description": "A Joi extension to validate countries",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "homepage": "https://github.com/meanie/joi-country#readme",
   "author": {
     "name": "Adam Reis",

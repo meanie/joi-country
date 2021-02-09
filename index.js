@@ -14,10 +14,23 @@ const JoiCountry = Joi => ({
     return {value};
   },
   validate(value, helpers) {
-    if (!JoiCountry.isValid(value)) {
-      const errors = helpers.error('country');
-      return {value, errors};
+
+    //Get data
+    const {validCodes, isValid} = JoiCountry;
+
+    //Validate based on array
+    if (Array.isArray(validCodes) && validCodes.includes(value)) {
+      return;
     }
+
+    //Use validator
+    else if (typeof isValid === 'function' && isValid(value)) {
+      return;
+    }
+
+    //Invalid
+    const errors = helpers.error('country');
+    return {value, errors};
   },
 });
 
@@ -26,6 +39,13 @@ const JoiCountry = Joi => ({
  */
 JoiCountry.setValidator = function(validator) {
   JoiCountry.isValid = validator;
+};
+
+/**
+ * Setter for array of valid country codes
+ */
+JoiCountry.setValidCodes = function(codes) {
+  JoiCountry.validCodes = codes;
 };
 
 //Export
